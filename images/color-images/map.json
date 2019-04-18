@@ -1,0 +1,156 @@
+{
+	"Black, Polished Safari":{
+		"filename":"black_polished_safari_2.jpg"
+	},
+	"Black, Distressed +$25.00":{
+		"filename":"distressed_black.jpg",
+		"displayname":"Black, Distressed"
+	},
+	"Black, Safari":{
+		"filename":"black_safari_new.jpg"
+	},
+	"Black, Classic":{
+		"filename":"black_classic.jpg",
+		"product_selectors":{
+			".category-alligator-golf-belts":"black_classic_golf.jpg"
+		}
+	},
+	"Black, Red Accent +$25.00":{
+		"filename":"red_on_black.jpg",
+		"displayname":"Black, Red Accent"
+	},
+	"Black, Gray Accent +$25.00":{
+		"filename":"black_gray_accent.jpg",
+		"displayname":"Black, Gray Accent"
+	},
+	"Black, Royal Accent +$25.00":{
+		"filename":"black_royal_accent.jpg",
+		"displayname":"Black, Royal Accent"
+	},
+	"Black, Royal Accent +$50.00":{
+		"filename":"black_royal_accent.jpg",
+		"displayname":"Black, Royal Accent"
+	},
+	"Brown, Chocolate Safari":{
+		"filename":"brown_chocolate_safari.jpg"
+	},
+	"Brown, Dark Chocolate Safari":{
+		"filename":"dark_chocolate_safari.jpg"
+	},
+	"Brown, Dark Polished Safari":{
+		"filename":"PDBRN.jpg"
+	},
+	"Brown, Dark Classic":{
+		"filename":"dark_brn_classic.jpg"
+	},
+	"Brown, Midnight Classic":{
+		"filename":"midnight_brn_classic.jpg"
+	},
+	"Brown, Midnight Polished Safari":{
+		"filename":"midnight_brn_classic.jpg"
+	},
+	"Brown, Bear Classic":{
+		"filename":"bear_brn.jpg"
+	},
+	"Brown, Dark Distressed +$25.00":{
+		"filename":"pol_dbrn_dist.jpg",
+		"displayname":"Brown, Dark Distressed"
+	},
+	"Peanut, Polished Safari":{
+		"filename":"peanut_polished_safari.jpg"
+	},
+	"Peanut, Classic":{
+		"filename":"dark_peanut_cl.jpg"
+	},
+	"Peanut, Light Classic":{
+		"filename":"peanut_light_classic.jpg"
+	},
+	"Peanut, Distressed +$25.00":{
+		"filename":"peanut_distressed.jpg",
+		"displayname":"Peanut, Distressed"
+	},
+	"Fawn Safari":{
+		"filename":"fawn_safari_new.jpg"
+	},
+	"Kangaroo Safari":{
+		"filename":"kangaroo_safari.jpg"
+	},
+	"Light Mahogany Safari":{
+		"filename":"brown_light_mahogany_safari.jpg"
+	},
+	"Burgundy Polished Safari":{
+		"filename":"burgundy_polished_safari.jpg"
+	},
+	"Burgundy Classic":{
+		"filename":"burgundy.jpg"
+	},
+	"Blue, Navy Polished Safari":{
+		"filename":"navy_polished_safari.jpg"
+	},
+	"Blue, Navy Dark Classic":{
+		"filename":"dark_navy.jpg"
+	},
+	"Blue, Pacific Polished Safari":{
+		"filename":"PPWP_resized.jpg"
+	},
+	"Blue, Pacific Classic":{
+		"filename":"pacific_blue.jpg"
+	},
+	"Gray, Elephant Polished Safari":{
+		"filename":"elephant_gray.jpg"
+	},
+	"Gray, Dark Classic":{
+		"filename":"dark_gray_cl.jpg"
+	},
+	"Cognac Classic":{
+		"filename":"cognac.jpg"
+	},
+	"Buttercup Safari":{
+		"filename":"buttercup_safari.jpg"
+	},
+	"Forest Green Polished Safari":{
+		"filename":"Forrest_Green_Golf.jpg"
+	},
+	"Red, Fire Polished Safari":{
+		"filename":"fire_red.jpg"
+	},
+	"Red, Fire Polished Safari +$50.00":{
+		"filename":"fire_red.jpg",
+		"displayname":"Red, Fire Polished Safari"
+	},
+	"Red, Fire Engine Classic":{
+		"filename":"red.jpg"
+	},
+	"Basic White Polished Safari":{
+		"filename":"ermine_white.jpg"
+	},
+	"Basic White Polished Safari +$50.00":{
+		"filename":"ermine_white.jpg",
+		"displayname":"Basic White Polished Safari"
+	},
+	"Blue, Royal Polished Safari":{
+		"filename":"royalblue_ps.jpg"
+	},
+	"Blue, Navy Distressed +$25.00":{
+		"filename":"blue_navy_distressed.jpg",
+		"displayname":"Blue, Navy Distressed"
+	},
+	"Pink Polished Safari":{
+		"filename":"pink.jpg"
+	},
+	"Purple Polished Safari":{
+		"filename":"purple_polished_safari.jpg"
+	},
+	"Purple Polished Safari +$50.00":{
+		"filename":"purple_polished_safari.jpg",
+		"displayname":"Purple Polished Safari"
+	},
+	"Blue, Navy, Red Accent +$25.00":{
+		"filename":"red_on_black_wp.jpg",
+		"displayname":"Blue, Navy, Red Accent"
+	},
+	"Gray, Distressed +$25.00":{
+		"filename":"distressed_gray.jpg",
+		"displayname":"Gray, Distressed"
+	}
+}
