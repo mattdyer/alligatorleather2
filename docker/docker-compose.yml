@@ -1,0 +1,44 @@
+version: '3'
+services:
+ web:
+  build:
+   context: ./
+   dockerfile: web.docker
+  container_name: testweb
+  ports:
+   - "8080:80"
+  volumes:
+   - ../:/var/www/html:delegated
+  links:
+   - app
+ app:
+  build:
+   context: ./
+   dockerfile: app.docker
+  container_name: testapp
+  volumes:
+   - ../:/var/www/html:delegated
+  depends_on:
+   - mysql
+  environment:
+   - "APP_ENV=${APP_ENV}"
+   - "APP_DEBUG=${APP_DEBUG}"
+   - "APP_KEY=${APP_KEY}"
+   - "DB_CONNECTION=${DB_CONNECTION}"
+   - "DB_HOST=${DB_HOST}"
+   - "DB_PORT=${DB_PORT}"
+   - "DB_DATABASE=${DB_DATABASE}"
+   - "DB_USERNAME=${DB_USERNAME}"
+   - "DB_PASSWORD=${DB_PASSWORD}"
+ mysql:
+  image: mysql:5.7
+  container_name: testmysql
+  environment:
+   MYSQL_DATABASE: ${DB_DATABASE}
+   MYSQL_USER: ${DB_USERNAME}
+   MYSQL_PASSWORD: ${DB_PASSWORD}
+   MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  volumes:
+    - ./mysql:/var/lib/mysql
+  ports:
+   - "3306:3306"
