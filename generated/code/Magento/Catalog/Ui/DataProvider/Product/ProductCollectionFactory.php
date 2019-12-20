@@ -38,7 +38,7 @@ class ProductCollectionFactory
      * @param array $data
      * @return \Magento\Catalog\Ui\DataProvider\Product\ProductCollection
      */
-    public function create(array $data = array())
+    public function create(array $data = [])
     {
         return $this->_objectManager->create($this->_instanceName, $data);
     }

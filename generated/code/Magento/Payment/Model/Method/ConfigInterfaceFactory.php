@@ -38,7 +38,7 @@ class ConfigInterfaceFactory
      * @param array $data
      * @return \Magento\Payment\Model\Method\ConfigInterface
      */
-    public function create(array $data = array())
+    public function create(array $data = [])
     {
         return $this->_objectManager->create($this->_instanceName, $data);
     }

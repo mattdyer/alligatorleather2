@@ -38,7 +38,7 @@ class FormFactory
      * @param array $data
      * @return \Magento\Swatches\Block\Adminhtml\Product\Attribute\Edit\Form
      */
-    public function create(array $data = array())
+    public function create(array $data = [])
     {
         return $this->_objectManager->create($this->_instanceName, $data);
     }

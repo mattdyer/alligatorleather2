@@ -38,7 +38,7 @@ class InputtypeFactory
      * @param array $data
      * @return \Magento\Eav\Model\Adminhtml\System\Config\Source\Inputtype
      */
-    public function create(array $data = array())
+    public function create(array $data = [])
     {
         return $this->_objectManager->create($this->_instanceName, $data);
     }

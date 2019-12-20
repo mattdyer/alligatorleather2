@@ -98,7 +98,7 @@ class Proxy extends \Magento\Framework\App\Cache\Type\Config implements \Magento
     /**
      * {@inheritdoc}
      */
-    public function save($data, $identifier, array $tags = array(), $lifeTime = null)
+    public function save($data, $identifier, array $tags = [], $lifeTime = null)
     {
         return $this->_getSubject()->save($data, $identifier, $tags, $lifeTime);
     }
@@ -106,7 +106,7 @@ class Proxy extends \Magento\Framework\App\Cache\Type\Config implements \Magento
     /**
      * {@inheritdoc}
      */
-    public function clean($mode = 'all', array $tags = array())
+    public function clean($mode = 'all', array $tags = [])
     {
         return $this->_getSubject()->clean($mode, $tags);
     }

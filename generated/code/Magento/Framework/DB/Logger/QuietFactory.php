@@ -38,7 +38,7 @@ class QuietFactory
      * @param array $data
      * @return \Magento\Framework\DB\Logger\Quiet
      */
-    public function create(array $data = array())
+    public function create(array $data = [])
     {
         return $this->_objectManager->create($this->_instanceName, $data);
     }

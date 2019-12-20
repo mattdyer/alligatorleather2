@@ -38,7 +38,7 @@ class CollectionFactory
      * @param array $data
      * @return \Magento\Catalog\Model\ResourceModel\Product\Collection
      */
-    public function create(array $data = array())
+    public function create(array $data = [])
     {
         return $this->_objectManager->create($this->_instanceName, $data);
     }

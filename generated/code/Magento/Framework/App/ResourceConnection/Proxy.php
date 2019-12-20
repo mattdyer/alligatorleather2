@@ -166,4 +166,20 @@ class Proxy extends \Magento\Framework\App\ResourceConnection implements \Magent
     {
         return $this->_getSubject()->getFkName($priTableName, $priColumnName, $refTableName, $refColumnName);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSchemaName($resourceName)
+    {
+        return $this->_getSubject()->getSchemaName($resourceName);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTablePrefix()
+    {
+        return $this->_getSubject()->getTablePrefix();
+    }
 }
