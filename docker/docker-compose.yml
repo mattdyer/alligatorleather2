@@ -8,7 +8,7 @@ services:
   ports:
    - "80:80"
   volumes:
-   - ../:/var/www/html:cached
+   - ../:/var/www/html:delegated
   links:
    - app
  app:
@@ -17,7 +17,7 @@ services:
    dockerfile: app.docker
   container_name: testapp
   volumes:
-   - ../:/var/www/html:cached
+   - ../:/var/www/html:delegated
   depends_on:
    - mysql
   environment:
