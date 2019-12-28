@@ -1,0 +1,33 @@
+a{
+	color: #8DAD2A;
+    text-decoration: none;
+}
+
+a:visited{
+	color: #8DAD2A;
+    text-decoration: none;
+}
+
+.home-link-image-container{
+	line-height: 150px;
+}
+
+.home-link-image-container img{
+	width:310px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.home-link{
+	float: left;
+    margin: 5px;
+}
+
+.home-link a{
+	font-size: 20px;
+}
+
+.home-link h2{
+	width: 100%;
+	text-align: center;
+}
