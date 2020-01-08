@@ -8,6 +8,11 @@ a:visited{
     text-decoration: none;
 }
 
+.logo img{
+	width: 299px;
+	height: 40.5px;
+}
+
 .home-link-image-container{
 	line-height: 150px;
 }
@@ -30,4 +35,23 @@ a:visited{
 .home-link h2{
 	width: 100%;
 	text-align: center;
+}
+
+.upsmap-container{
+	padding: 20px;
+}
+
+.upsmap-container img{
+	padding:5px;
+	border:1px solid #000;
+}
+
+.upsmap-explanation{
+	border: 1px solid #CCC;
+    background-color: #eefaee;
+    padding: 8px 15px;
+    font-size: 12px;
+    margin: 16px 0;
+    line-height: 21px;
+    color: #777;
 }
