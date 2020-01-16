@@ -8,6 +8,10 @@ a:visited{
     text-decoration: none;
 }
 
+.page-header .panel.wrapper{
+	background-color: #8DAD2A;
+}
+
 .logo img{
 	width: 299px;
 	height: 40.5px;
