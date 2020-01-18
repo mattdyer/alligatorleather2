@@ -9,7 +9,7 @@ a:visited{
 }
 
 
-.page-header .panel.wrapper{
+.page-wrapper .page-header .panel.wrapper{
 	background-color: #8DAD2A;
 }
 
@@ -35,6 +35,12 @@ a:visited{
 
 .home-link a{
 	font-size: 20px;
+	color: #8DAD2A;
+}
+
+.home-link a:visited{
+	font-size: 20px;
+	color: #8DAD2A;
 }
 
 .home-link h2{
