@@ -8,6 +8,7 @@ a:visited{
     text-decoration: none;
 }
 
+
 .page-header .panel.wrapper{
 	background-color: #8DAD2A;
 }
@@ -59,3 +60,15 @@ a:visited{
     line-height: 21px;
     color: #777;
 }
+
+.shipping-address-message{
+	border: 1px solid #CCC;
+    background-color: #eefaee;
+    padding: 8px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 16px 0;
+    line-height: 21px;
+    color: #777;
+}
+

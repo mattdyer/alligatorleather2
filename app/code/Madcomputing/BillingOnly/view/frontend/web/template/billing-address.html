@@ -1,0 +1,19 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="checkout-billing-address">
+    <div class="shipping-address-message">
+        All orders must be shipped to the customer’s billing address or an alternate address approved by customer’s issuing bank!
+    </div>
+    <render args="detailsTemplate"/>
+    <fieldset class="fieldset" data-bind="visible: !isAddressDetailsVisible()">
+        <each args="getRegion('billing-address-list')" render="" />
+        <div data-bind="fadeVisible: isAddressFormVisible">
+            <render args="formTemplate"/>
+        </div>
+        <render args="actionsTemplate"/>
+    </fieldset>
+</div>
