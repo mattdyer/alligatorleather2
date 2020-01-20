@@ -78,3 +78,20 @@ a:visited{
     color: #777;
 }
 
+.checkout-shipping-address .block-custom-info-title{
+	display:none;
+}
+
+.checkout-shipping-address .order-comment-block-title{
+	font-weight: bold;
+}
+
+.buckle-option-container{
+	
+}
+
+.buckle-option-container img{
+	display: block;
+	width: 80%;
+    margin: 10px 29px;
+}
