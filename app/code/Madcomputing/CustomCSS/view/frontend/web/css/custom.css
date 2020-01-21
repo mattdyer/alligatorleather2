@@ -92,6 +92,17 @@ a:visited{
 
 .buckle-option-container img{
 	display: block;
-	width: 80%;
+	width: 65%;
     margin: 10px 29px;
+}
+
+.product-add-form{
+	border: 1px solid #ACA;
+	padding: 22px;
+    margin-bottom: 20px;
+}
+
+.product-options-wrapper .field{
+	border-bottom: 1px solid #DDD;
+	padding-bottom: 21px;
 }
