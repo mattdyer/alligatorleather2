@@ -7,38 +7,18 @@
 
     $product = $block->getProduct();
 
-    //var_dump($block->getTestString());
-
-	//$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-    //$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');
-
     $colorJSON = file_get_contents("images/color-images/map.json");
 	$colorMap = json_decode($colorJSON, true);
-
-    //$options = $block->getProductOptions($product);
-
-    //var_dump($colorMap);
-
-	//var_dump($block->getCurrentProduct());
-	
-	//var_dump($product->getEntityId());
-
-	//var_dump($product->getOptions()); 
 
 
 	foreach ($product->getOptions() as $o) {
 	    
-		//print_r($o->getTitle());
-
-		//print_r('<br>');
-
 		if($o->getTitle() == 'Color / Finish'){
 
             $images = [];
 
 			foreach ($o->getValues() as $value) {
-				//print_r($value->getData()['title']);
-		        //print_r('<br>');
+				
 		        if(array_key_exists($value->getData()['title'], $colorMap)){
 
 		        	$fileName = $colorMap[$value->getData()['title']]['filename'];
@@ -54,12 +34,7 @@
                         "videoUrl"=>null
                     );
 
-		        	//print_r("<img src=\"/images/color-images/$fileName\">");
-		        	//print_r('<br>');
-
-			        //print_r($colorMap[$value->getData()['title']]['filename']);
-			        //print_r('<br>');
-			        //print_r('<br>');
+		        	
 			    }else{
 			    	//print_r('not found');
 			    	//print_r('<br>');
