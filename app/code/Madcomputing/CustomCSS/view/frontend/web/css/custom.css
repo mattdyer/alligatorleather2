@@ -106,3 +106,8 @@ a:visited{
 	border-bottom: 1px solid #DDD;
 	padding-bottom: 21px;
 }
+
+.product-options-wrapper .field.choice{
+	border-bottom: none;
+	padding-bottom: 0px;
+}
