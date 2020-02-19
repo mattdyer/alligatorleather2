@@ -111,3 +111,17 @@ a:visited{
 	border-bottom: none;
 	padding-bottom: 0px;
 }
+
+.color-image-thumb-container {
+    display: inline-block;
+    width: 200px;
+    margin: 14px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.color-image-thumb-caption {
+    text-align: center;
+    font-size: 12px;
+    color: #8dad29;
+}

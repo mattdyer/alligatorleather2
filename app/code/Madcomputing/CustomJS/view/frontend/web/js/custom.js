@@ -13,8 +13,6 @@ require([
 			var optionLabel = $(this);
 			var nameSpan = $('span', optionLabel).first()
 
-			console.log($.trim(nameSpan.text()));
-
 			var buckle = buckleImageMap[$.trim(nameSpan.text())];
 
 			if(buckle){

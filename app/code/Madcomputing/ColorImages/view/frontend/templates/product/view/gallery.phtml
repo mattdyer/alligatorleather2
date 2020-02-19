@@ -4,7 +4,6 @@
 	
     $images = $block->getGalleryImagesJson();
     
-
     $product = $block->getProduct();
 
     $colorJSON = file_get_contents("images/color-images/map.json");
@@ -15,7 +14,9 @@
 	    
 		if($o->getTitle() == 'Color / Finish'){
 
-            $images = [];
+            $colorImages = [];
+            
+            $colorImages[] = json_decode($images[0]);
 
 			foreach ($o->getValues() as $value) {
 				
@@ -23,7 +24,7 @@
 
 		        	$fileName = $colorMap[$value->getData()['title']]['filename'];
 
-                    $images[] = array(
+                    $colorImages[] = array(
                         "thumb"=>"/images/color-images/$fileName",
                         "img"=>"/images/color-images/$fileName",
                         "full"=>"/images/color-images/$fileName",
@@ -42,7 +43,7 @@
 			    }
 		    }
 
-            $images = json_encode($images);
+            $images = json_encode($colorImages);
 
 		}
 
@@ -94,6 +95,29 @@
     }
 
     loader.style.paddingBottom = ( config.height / config.width * 100) + "%";
+    
+    require([
+        'jquery'
+    ], function ($) {
+        $(function(){
+            $('.field .label span').each(function(){
+                
+                var span = $(this);
+                
+                var content = span.html();
+                if(content == 'Color / Finish'){
+                    console.log('found');
+                    
+                    //var select = span.closest()
+                    
+                }
+                
+                console.log(content);
+                
+            });
+        });
+    });
+    
 </script>
 <script type="text/x-magento-init">
     {
@@ -167,4 +191,10 @@
 </script>
 
 
-
+<?php
+    
+    foreach ($colorImages as $image) {
+        print_r('<div class="color-image-thumb-container"><img class="color-image-thumb" src="' . $image['img'] . '"><div class="color-image-thumb-caption">' . $image['caption'] . '</div></div>');
+    }
+    
+?>
