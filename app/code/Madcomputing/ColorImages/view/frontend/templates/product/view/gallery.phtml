@@ -21,8 +21,8 @@
 			foreach ($o->getValues() as $value) {
 				
 		        if(array_key_exists($value->getData()['title'], $colorMap)){
-
-		        	$fileName = $colorMap[$value->getData()['title']]['filename'];
+                    
+                    $fileName = $colorMap[$value->getData()['title']]['filename'];
 
                     $colorImages[] = array(
                         "thumb"=>"/images/color-images/$fileName",
@@ -32,7 +32,8 @@
                         "position"=>"110",
                         "isMain"=>false,
                         "type"=>"image",
-                        "videoUrl"=>null
+                        "videoUrl"=>null,
+                        "optionValue"=>$value->getData()['option_type_id']
                     );
 
 		        	
@@ -100,6 +101,9 @@
         'jquery'
     ], function ($) {
         $(function(){
+            
+            var colorImageSelect;
+            
             $('.field .label span').each(function(){
                 
                 var span = $(this);
@@ -108,11 +112,20 @@
                 if(content == 'Color / Finish'){
                     console.log('found');
                     
-                    //var select = span.closest()
+                    colorImageSelect = span.closest('.field').find('select');
+                    
+                    colorImageSelect.on('change', function(){
+                        var value = $(this).val();
+                        
+                        $('.color-image-thumb-container-' + value).click();
+                        
+                    });
+                    
+                    console.log(colorImageSelect);
                     
                 }
                 
-                console.log(content);
+                //console.log(content);
                 
             });
             
@@ -121,6 +134,9 @@
                 var thumb = $(this);
                 
                 $('.fotorama-item').data('fotorama').show(thumb.data('thumbindex'));
+                
+                colorImageSelect.val(thumb.data('optionvalue'));
+                
             });
             
         });
@@ -202,7 +218,7 @@
 <?php
     
     foreach ($colorImages as $index => $image) {
-        print_r('<div data-thumbindex="' . $index . '" class="color-image-thumb-container"><img class="color-image-thumb" src="' . $image['img'] . '"><div class="color-image-thumb-caption">' . $image['caption'] . '</div></div>');
+        print_r('<div data-optionvalue="' . $image['optionValue'] . '" data-thumbindex="' . $index . '" class="color-image-thumb-container color-image-thumb-container-' . $image['optionValue'] . '"><img class="color-image-thumb" src="' . $image['img'] . '"><div class="color-image-thumb-caption">' . $image['caption'] . '</div></div>');
     }
     
 ?>
