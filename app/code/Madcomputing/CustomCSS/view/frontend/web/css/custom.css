@@ -118,6 +118,7 @@ a:visited{
     margin: 14px;
     height: 100px;
     cursor: pointer;
+    vertical-align: top;
 }
 
 .color-image-thumb-caption {

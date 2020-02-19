@@ -16,7 +16,7 @@
 
             $colorImages = [];
             
-            $colorImages[] = json_decode($images[0]);
+            //$colorImages[] = json_decode($images[0]);
 
 			foreach ($o->getValues() as $value) {
 				
@@ -115,6 +115,14 @@
                 console.log(content);
                 
             });
+            
+            $('.color-image-thumb-container').on('click', function(){
+                
+                var thumb = $(this);
+                
+                $('.fotorama-item').data('fotorama').show(thumb.data('thumbindex'));
+            });
+            
         });
     });
     
@@ -193,8 +201,8 @@
 
 <?php
     
-    foreach ($colorImages as $image) {
-        print_r('<div class="color-image-thumb-container"><img class="color-image-thumb" src="' . $image['img'] . '"><div class="color-image-thumb-caption">' . $image['caption'] . '</div></div>');
+    foreach ($colorImages as $index => $image) {
+        print_r('<div data-thumbindex="' . $index . '" class="color-image-thumb-container"><img class="color-image-thumb" src="' . $image['img'] . '"><div class="color-image-thumb-caption">' . $image['caption'] . '</div></div>');
     }
     
 ?>
