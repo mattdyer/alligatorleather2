@@ -5,7 +5,7 @@
     $images = $block->getGalleryImagesJson();
     
     $product = $block->getProduct();
-
+    
     $colorJSON = file_get_contents("images/color-images/map.json");
 	$colorMap = json_decode($colorJSON, true);
     
@@ -21,8 +21,22 @@
 				
                 if(array_key_exists($value->getData()['title'], $colorMap)){
                     
-                    $fileName = $colorMap[$value->getData()['title']]['filename'];
-
+                    $colorMapItem = $colorMap[$value->getData()['title']];
+                    
+                    $fileName = $colorMapItem['filename'];
+                    
+                    if(array_key_exists('skus', $colorMapItem)){
+                        if(array_key_exists($product->getSku(), $colorMapItem['skus'])){
+                            
+                            print_r($fileName);
+                            print_r('<br>');
+                            $fileName = $colorMapItem['skus'][$product->getSku()];
+                            
+                            print_r($fileName);
+                            
+                        }
+                    }
+                    
                     $colorImages[] = array(
                         "thumb"=>"/images/color-images/$fileName",
                         "img"=>"/images/color-images/$fileName",

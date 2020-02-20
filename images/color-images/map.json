@@ -11,8 +11,9 @@
 	},
 	"Black, Classic":{
 		"filename":"black_classic.jpg",
-		"product_selectors":{
-			".category-alligator-golf-belts":"black_classic_golf.jpg"
+		"skus":{
+			"AMERICAN-GOLF-BELT-SPECIAL-ORDER": "black_classic_golf.jpg",
+			"AMERICAN-GOLF-BELT": "black_classic_golf.jpg"
 		}
 	},
 	"Black, Red Accent":{
