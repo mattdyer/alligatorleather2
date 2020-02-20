@@ -8,19 +8,18 @@
 
     $colorJSON = file_get_contents("images/color-images/map.json");
 	$colorMap = json_decode($colorJSON, true);
-
-
-	foreach ($product->getOptions() as $o) {
+    
+    foreach ($product->getOptions() as $o) {
 	    
 		if($o->getTitle() == 'Color / Finish'){
 
             $colorImages = [];
             
             //$colorImages[] = json_decode($images[0]);
-
+            
 			foreach ($o->getValues() as $value) {
 				
-		        if(array_key_exists($value->getData()['title'], $colorMap)){
+                if(array_key_exists($value->getData()['title'], $colorMap)){
                     
                     $fileName = $colorMap[$value->getData()['title']]['filename'];
 
@@ -110,18 +109,28 @@
                 
                 var content = span.html();
                 if(content == 'Color / Finish'){
-                    console.log('found');
                     
-                    colorImageSelect = span.closest('.field').find('select');
+                    var field = span.closest('.field');
+                    
+                    colorImageSelect = field.find('select');
                     
                     colorImageSelect.on('change', function(){
                         var value = $(this).val();
                         
-                        $('.color-image-thumb-container-' + value).click();
+                        var matchingThumb = $('.color-image-thumb-container-' + value);
+                        
+                        matchingThumb.click();
+                        
+                        $('.color-image-thumb-container', field).remove();
+                        
+                        var thumbClone = matchingThumb.clone();
+                        
+                        thumbClone.addClass('color-image-selected');
+                        
+                        colorImageSelect.after(thumbClone);
+                        
                         
                     });
-                    
-                    console.log(colorImageSelect);
                     
                 }
                 
@@ -174,8 +183,7 @@
                         ?: $block->getImageAttribute('product_page_image_small', 'width'); ?>,
                     <?php endif; ?>
                     <?php if ($block->getImageAttribute('product_page_image_medium', 'height') || $block->getImageAttribute('product_page_image_medium', 'width')): ?>
-                        "height": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'height')
-                        ?: $block->getImageAttribute('product_page_image_medium', 'width'); ?>,
+                        "height": 400,
                     <?php endif; ?>
                     <?php if ($block->getVar("gallery/transition/duration")): ?>
                         "transitionduration": <?= /* @escapeNotVerified */ $block->getVar("gallery/transition/duration") ?>,
