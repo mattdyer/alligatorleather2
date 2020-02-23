@@ -27,13 +27,7 @@
                     
                     if(array_key_exists('skus', $colorMapItem)){
                         if(array_key_exists($product->getSku(), $colorMapItem['skus'])){
-                            
-                            print_r($fileName);
-                            print_r('<br>');
                             $fileName = $colorMapItem['skus'][$product->getSku()];
-                            
-                            print_r($fileName);
-                            
                         }
                     }
                     
@@ -65,7 +59,16 @@
 	        print_r($value->getData());
 	    }*/
 	}
-
+    
+    $decodedImages = json_decode($images, true);
+    
+    foreach($decodedImages as $key => $image){
+        
+        $decodedImages[$key]['img'] = $image['full'];
+    }
+    
+    $images = json_encode($decodedImages);
+    
 ?>
 
 
@@ -158,7 +161,9 @@
                 
                 $('.fotorama-item').data('fotorama').show(thumb.data('thumbindex'));
                 
-                colorImageSelect.val(thumb.data('optionvalue'));
+                if(colorImageSelect){
+                    colorImageSelect.val(thumb.data('optionvalue'));
+                }
                 
             });
             
@@ -238,9 +243,13 @@
 
 
 <?php
-    
-    foreach ($colorImages as $index => $image) {
-        print_r('<div data-optionvalue="' . $image['optionValue'] . '" data-thumbindex="' . $index . '" class="color-image-thumb-container color-image-thumb-container-' . $image['optionValue'] . '"><img class="color-image-thumb" src="' . $image['img'] . '"><div class="color-image-thumb-caption">' . $image['caption'] . '</div></div>');
+    if(isset($decodedImages)){
+        foreach ($decodedImages as $index => $image) {
+            
+            $optionValue = (array_key_exists('optionValue', $image)) ? $image['optionValue']: '0';
+            
+            print_r('<div data-optionvalue="' . $optionValue . '" data-thumbindex="' . $index . '" class="color-image-thumb-container color-image-thumb-container-' . $optionValue . '"><img class="color-image-thumb" src="' . $image['full'] . '"><div class="color-image-thumb-caption">' . $image['caption'] . '</div></div>');
+        }
     }
     
 ?>

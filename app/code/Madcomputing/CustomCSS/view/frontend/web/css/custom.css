@@ -92,7 +92,7 @@ a:visited{
 
 .buckle-option-container img{
 	display: block;
-	width: 65%;
+	width: 45%;
     margin: 10px 29px;
 }
 
@@ -114,9 +114,9 @@ a:visited{
 
 .color-image-thumb-container {
     display: inline-block;
-    width: 200px;
+    width: 20%;
     margin: 14px;
-    height: 100px;
+    min-height: 100px;
     cursor: pointer;
     vertical-align: top;
 }
@@ -135,4 +135,8 @@ a:visited{
 	.color-image-selected{
 		display:block;
 	}
+}
+
+.initials-option-image{
+	max-width: 100px;
 }
