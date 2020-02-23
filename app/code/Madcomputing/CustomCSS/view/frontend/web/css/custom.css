@@ -121,6 +121,10 @@ a:visited{
     vertical-align: top;
 }
 
+.control .color-image-thumb-container{
+	width: 60%;
+}
+
 .color-image-thumb-caption {
     text-align: center;
     font-size: 12px;

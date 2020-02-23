@@ -119,6 +119,7 @@
         $(function(){
             
             var colorImageSelect;
+            var colorImageField;
             
             $('.field .label span').each(function(){
                 
@@ -127,9 +128,9 @@
                 var content = span.html();
                 if(content == 'Color / Finish'){
                     
-                    var field = span.closest('.field');
+                    colorImageField = span.closest('.field');
                     
-                    colorImageSelect = field.find('select');
+                    colorImageSelect = colorImageField.find('select');
                     
                     colorImageSelect.on('change', function(){
                         var value = $(this).val();
@@ -138,13 +139,15 @@
                         
                         matchingThumb.click();
                         
-                        $('.color-image-thumb-container', field).remove();
+                        showThumbUnderDropdown(matchingThumb);
+                        
+                        /*$('.color-image-thumb-container', field).remove();
                         
                         var thumbClone = matchingThumb.clone();
                         
                         thumbClone.addClass('color-image-selected');
                         
-                        colorImageSelect.after(thumbClone);
+                        colorImageSelect.after(thumbClone);*/
                         
                         
                     });
@@ -163,9 +166,22 @@
                 
                 if(colorImageSelect){
                     colorImageSelect.val(thumb.data('optionvalue'));
+                    
+                    showThumbUnderDropdown(thumb);
+                    
                 }
                 
             });
+           
+           function showThumbUnderDropdown(matchingThumb){
+                $('.color-image-thumb-container', colorImageField).remove();
+                            
+                var thumbClone = matchingThumb.clone();
+                
+                thumbClone.addClass('color-image-selected');
+                
+                colorImageSelect.after(thumbClone);
+            }
             
         });
     });
