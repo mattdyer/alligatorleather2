@@ -39,6 +39,6 @@ services:
    MYSQL_PASSWORD: ${DB_PASSWORD}
    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
   volumes:
-    - ./mysql:/var/lib/mysql
+    - ./mysql:/var/lib/mysql:delegated
   ports:
    - "3306:3306"

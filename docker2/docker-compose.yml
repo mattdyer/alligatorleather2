@@ -1,0 +1,39 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: testmysql2
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+     - "3306:3306"
+  magento:
+    image: 'bitnami/magento:2.3.3'
+    environment:
+      - MARIADB_HOST=testmysql2
+      - MARIADB_PORT_NUMBER=3306
+      - MAGENTO_DATABASE_USER=${DB_USERNAME}
+      - MAGENTO_DATABASE_PASSWORD=${DB_PASSWORD}
+      - MAGENTO_DATABASE_NAME=${DB_DATABASE}
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT_NUMBER=9200
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - '../:/bitnami'
+    depends_on:
+      - mysql
+      - elasticsearch
+  elasticsearch:
+    image: 'bitnami/elasticsearch:6'
+    volumes:
+      - 'elasticsearch_data:/bitnami/elasticsearch/data'
+volumes:
+  elasticsearch_data:
+    driver: local
