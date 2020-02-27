@@ -9,6 +9,11 @@
     $colorJSON = file_get_contents("images/color-images/map.json");
 	$colorMap = json_decode($colorJSON, true);
     
+    $mainImages = [
+        "AMERICAN-GOLF-BELT-SPECIAL-ORDER" => 247,
+        "BELT-ULTIMATE-CUSTOM" => 883
+    ];
+    
     foreach ($product->getOptions() as $o) {
 	    
 		if($o->getTitle() == 'Color / Finish'){
@@ -31,13 +36,19 @@
                         }
                     }
                     
+                    $main = false;
+                    
+                    if(array_key_exists($product->getSku(), $mainImages) && $value->getData()['option_type_id'] == $mainImages[$product->getSku()]){
+                        $main = true;
+                    }
+                    
                     $colorImages[] = array(
                         "thumb"=>"/images/color-images/$fileName",
                         "img"=>"/images/color-images/$fileName",
                         "full"=>"/images/color-images/$fileName",
                         "caption"=>$value->getData()['title'],
                         "position"=>"110",
-                        "isMain"=>false,
+                        "isMain"=>$main,
                         "type"=>"image",
                         "videoUrl"=>null,
                         "optionValue"=>$value->getData()['option_type_id']
