@@ -132,9 +132,9 @@ a:visited{
 }
 
 @media only screen and (max-width: 600px) {
-	.color-image-thumb-container{
+	/*.color-image-thumb-container{
 		display:none;
-	}
+	}*/
 	
 	.color-image-selected{
 		display:block;
