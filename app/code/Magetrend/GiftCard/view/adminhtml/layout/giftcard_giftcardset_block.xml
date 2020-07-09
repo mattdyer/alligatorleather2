@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="adminhtml.giftcard.giftcardset.container">
+            <block class="Magetrend\GiftCard\Block\Adminhtml\GiftCardSet\Grid" name="adminhtml.giftcard.giftcardset.grid" as="grid">
+                <arguments>
+                    <argument name="id" xsi:type="string">gift-card-set-grid</argument>
+                    <argument name="dataSource" xsi:type="object">Magetrend\GiftCard\Model\ResourceModel\GiftCardSet\Collection</argument>
+                    <argument name="default_sort" xsi:type="string">entity_id</argument>
+                    <argument name="default_dir" xsi:type="string">desc</argument>
+                    <argument name="use_ajax" xsi:type="string">1</argument>
+                    <argument name="grid_url" xsi:type="url" path="giftcardset/*/grid">
+                        <param name="_current">1</param>
+                    </argument>
+                </arguments>
+
+                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="adminhtml.newslettrer.subscriber.grid.columnSet" as="grid.columnSet">
+                    <arguments>
+                        <argument name="rowUrl" xsi:type="array">
+                            <item name="path" xsi:type="string">giftcard/*/edit</item>
+                            <item name="extraParamsTemplate" xsi:type="array">
+                                <item name="id" xsi:type="string">getId</item>
+                            </item>
+                        </argument>
+                    </arguments>
+
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="entity_id">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">ID</argument>
+                            <argument name="index" xsi:type="string">entity_id</argument>
+
+                            <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            <argument name="column_css_class" xsi:type="string">col-id</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="name">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Name</argument>
+                            <argument name="index" xsi:type="string">name</argument>
+                            <argument name="header_css_class" xsi:type="string">col-name</argument>
+                            <argument name="column_css_class" xsi:type="string">col-name</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="value">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Initial Value</argument>
+                            <argument name="index" xsi:type="string">value</argument>
+                            <argument name="header_css_class" xsi:type="string">col-name</argument>
+                            <argument name="column_css_class" xsi:type="string">col-name</argument>
+                            <argument name="renderer" xsi:type="string">Magetrend\GiftCard\Block\Adminhtml\GiftCardSet\Grid\Column\Renderer\Value</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="life_time">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Life Time</argument>
+                            <argument name="index" xsi:type="string">life_time</argument>
+                            <argument name="header_css_class" xsi:type="string">col-name</argument>
+                            <argument name="column_css_class" xsi:type="string">col-name</argument>
+                            <argument name="renderer" xsi:type="string">Magetrend\GiftCard\Block\Adminhtml\GiftCardSet\Grid\Column\Renderer\Day</argument>
+                        </arguments>
+                    </block>
+                </block>
+
+            </block>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,23 @@
+<div class="admin__field field-apply-gift card-code"
+     data-giftcard-config="<?php echo htmlentities($block->getJsonConfig(), ENT_QUOTES, 'UTF-8'); ?>">
+    <label class="admin__field-label">
+        <span><?php echo  /* @escapeNotVerified */ __('Apply Gift Card Code') ?></span>
+    </label>
+    <div class="admin__field-control">
+        <input type="text" class="admin__control-text" id="giftcard:code" value="" name="coupon_code" />
+        <?php echo $block->getButtonHtml(__('Apply'), 'giftCard.add($F(\'giftcard:code\'))') ?>
+        <?php $collection = $block->getGiftCardCollection(); ?>
+        <?php if ($collection->getSize() > 0) : ?>
+            <?php foreach ($collection as $giftCard) : ?>
+                <p class="added-coupon-code">
+                    <span><?php echo $block->escapeHtml($giftCard->getCode()) ?></span>
+                    <a href="#" onclick="giftCard.remove('<?php echo $giftCard->getId(); ?>'); return false;" title="<?= /* @escapeNotVerified */ __('Remove Gift Card Code') ?>"
+                       class="action-remove"><span><?= /* @escapeNotVerified */ __('Remove') ?></span></a>
+                </p>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <script>
+            require(["Magetrend_GiftCard/js/order/create/script"]);
+        </script>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="Magetrend_GiftCard::giftcard"
+             title="Gift Card"
+             module="Magetrend_GiftCard"
+             sortOrder="1000"
+             parent="Magento_Catalog::catalog"
+             resource="Magetrend_GiftCard::giftcard"/>
+
+        <add id="Magetrend_GiftCard::giftcard_index"
+             title="Manage Gift Cards"
+             parent="Magetrend_GiftCard::giftcard"
+             module="Magetrend_GiftCard"
+             sortOrder="1"
+             action="giftcard/giftcard/"
+             resource="Magetrend_GiftCard::managegiftcard"/>
+
+        <add id="Magetrend_GiftCard::giftcardset_index"
+             title="Gift Card Set"
+             parent="Magetrend_GiftCard::giftcard"
+             module="Magetrend_GiftCard"
+             sortOrder="50"
+             action="giftcard/giftcardset/"
+             resource="Magetrend_GiftCard::giftcardset"/>
+
+        <add id="Magetrend_GiftCard::template_index"
+             title="Templates"
+             parent="Magetrend_GiftCard::giftcard"
+             module="Magetrend_GiftCard"
+             sortOrder="110"
+             action="giftcard/template/"
+             resource="Magetrend_GiftCard::template"/>
+
+        <add id="Magetrend_GiftCard::settings"
+             title="Settings"
+             parent="Magetrend_GiftCard::giftcard"
+             module="Magetrend_GiftCard"
+             sortOrder="120"
+             action="adminhtml/system_config/edit/section/giftcard"
+             resource="Magento_Config::config"/>
+    </menu>
+</config>

@@ -1,0 +1,18 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$helper = $objectManager->get('\Patrickfuchshofer\Giftvoucher\Helper\Func');
+$_get = $this->getRequest()->getParams();
+
+
+$wpdb = new \Patrickfuchshofer\Giftvoucher\Model\Libs\Wpdb();
+$return = '';
+$voucher_table     = $wpdb->prefix . 'giftvouchers_list';
+if (isset($_get['voucheritem'])) {
+	$cancelpagemessage = $helper->get_option('wpgv_cancelpagemessage') ? $helper->get_option('wpgv_cancelpagemessage') : 'You cancelled your order. Please place your order again from <a href="' . $helper->get_site_url() . 'giftvoucher/giftitempage/index">here</a>.';
+	$voucheritem = (int) $helper->sanitize_text_field($_get['voucheritem']);
+	$wpdb->query('DELETE FROM ' . $voucher_table . ' WHERE id=:id', [
+		'id' => $voucheritem
+	]);
+	$return .= stripslashes($cancelpagemessage);
+}
+echo $return;

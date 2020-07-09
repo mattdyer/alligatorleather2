@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="gift-card-balance">
+                <arguments>
+                    <argument name="label" xsi:type="string">Check Gift Card Balance</argument>
+                    <argument name="path" xsi:type="string">gift-card-balance</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

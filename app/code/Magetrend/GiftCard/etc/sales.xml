@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Sales:etc/sales.xsd">
+    <section name="quote">
+        <group name="totals">
+            <item name="giftcard_before_tax" instance="Magetrend\GiftCard\Model\Sales\Quote\Totals\GiftCard\BeforeTax" sort_order="440">
+                <renderer name="adminhtml" instance="Magento\Sales\Block\Adminhtml\Order\Create\Totals\DefaultTotals"/>
+            </item>
+            <item name="giftcard_after_tax" instance="Magetrend\GiftCard\Model\Sales\Quote\Totals\GiftCard\AfterTax" sort_order="460">
+                <renderer name="adminhtml" instance="Magento\Sales\Block\Adminhtml\Order\Create\Totals\DefaultTotals"/>
+            </item>
+        </group>
+    </section>
+    <section name="order_invoice">
+        <group name="totals">
+            <item name="giftcard" instance="Magetrend\GiftCard\Model\Sales\Order\Invoice\Totals\GiftCard" sort_order="250"/>
+        </group>
+    </section>
+    <section name="order_creditmemo">
+        <group name="totals">
+            <item name="giftcard" instance="Magetrend\GiftCard\Model\Sales\Order\Creditmemo\Totals\GiftCard" sort_order="350"/>
+        </group>
+    </section>
+</config>

@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <tab id="magetrend" translate="label" sortOrder="200">
+            <label>Magetrend Extensions</label>
+        </tab>
+        <section id="giftcard" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Gift Card</label>
+            <tab>magetrend</tab>
+            <resource>Magetrend_GiftCard::config_general</resource>
+            <group id="general" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="is_active" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Is Active</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="catalog" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Catalog Settings</label>
+                <field id="price_view" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Price View</label>
+                    <source_model>Magetrend\GiftCard\Model\Config\Source\PriceView</source_model>
+                </field>
+            </group>
+
+            <group id="email" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email Settings</label>
+                <field id="to_customer" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Gift Card to Customer Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="to_friend" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Gift Card to Friend Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="default_sender_name" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Name</label>
+                </field>
+                <field id="default_sender_email" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Email</label>
+                </field>
+                <field id="pdf" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Attach Gift Card PDF</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+            </group>
+            <group id="tax" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Tax Calculation Settings</label>
+                <field id="type" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Apply Gift Card</label>
+                    <source_model>Magetrend\GiftCard\Model\Config\Source\Tax</source_model>
+                </field>
+                <field id="price_tax" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Apply Gift Card On Prices</label>
+                    <source_model>Magento\Tax\Model\System\Config\Source\PriceType</source_model>
+                </field>
+            </group>
+
+            <group id="recaptcha" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Google ReCaptcha</label>
+                <field id="site_key" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Site Key</label>
+                    <comment>To get site and secret keys please visit: https://www.google.com/recaptcha/admin</comment>
+                </field>
+                <field id="secret_key" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Secret Key</label>
+                    <comment>To get site and secret keys please visit: https://www.google.com/recaptcha/admin</comment>
+                </field>
+                <field id="show_balance_form" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show in Balance Check Form</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Disable possibility to pay for a gift card with cash on delivery</comment>
+                </field>
+            </group>
+
+            <group id="payment" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Payments Settings</label>
+                <field id="cod" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Disable with Cash On Delivery</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Disable possibility to pay for a gift card with cash on delivery</comment>
+                </field>
+            </group>
+
+            <group id="license" translate="label" type="text" sortOrder="9999" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label><![CDATA[Information & License]]></label>
+                <field id="key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>License Key</label>
+                    <comment><![CDATA[
+                    If you don't know the license key, please follow this article
+                    <a target="_blank" href="http://wiki2.magetrend.com/licensing/">
+                    http://wiki2.magetrend.com/licensing/</a>
+                    ]]></comment>
+                </field>
+                <field id="info" translate="label" type="label" sortOrder="1002" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <frontend_model>Magetrend\GiftCard\Block\Adminhtml\Config\System\Config\Info</frontend_model>
+                </field>
+            </group>
+        </section>
+        <section id="sales">
+            <group id="totals_sort" >
+                <field id="giftcard" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Gift Card</label>
+                </field>
+            </group>
+        </section>
+
+    </system>
+</config>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+ -->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root" label="Root">
+        <block class="Magetrend\GiftCard\Block\Adminhtml\Product\Edit\Tab\Sets" name="catalog.product.edit.tab.giftcardsets"/>
+        <block class="Magento\Backend\Block\Widget\Grid\Serializer" name="crosssell_grid_serializer">
+            <arguments>
+                <argument name="input_names" xsi:type="array">
+                    <item name="0" xsi:type="string">position</item>
+                    <item name="1" xsi:type="string">price</item>
+                </argument>
+                <argument name="grid_block" xsi:type="string">catalog.product.edit.tab.giftcardsets</argument>
+                <argument name="callback" xsi:type="string">getAssignedGiftCardSets</argument>
+                <argument name="input_element_name" xsi:type="string">giftcard[set]</argument>
+                <argument name="reload_param_name" xsi:type="string">products_giftcardset</argument>
+            </arguments>
+        </block>
+    </container>
+</layout>

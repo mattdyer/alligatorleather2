@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+     <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="gift-card" xsi:type="array">
+                    <item name="class" xsi:type="string">Magetrend\GiftCard\Ui\DataProvider\Product\Form\Modifier\GiftCard</item>
+                    <item name="sortOrder" xsi:type="number">200</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magetrend\GiftCard\Ui\DataProvider\Product\Form\Modifier\GiftCard">
+        <arguments>
+            <argument name="scopeName" xsi:type="string">product_form.product_form</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Catalog\Controller\Adminhtml\Product\Save">
+        <plugin name="magento-catalog-admin-controller-plugin" type="Magetrend\GiftCard\Plugin\Catalog\Controller\Adminhtml\Product\Save" sortOrder="10"/>
+    </type>
+</config>

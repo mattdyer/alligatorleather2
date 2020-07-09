@@ -1,0 +1,70 @@
+<?php
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+?>
+<?php
+/** @var \Magetrend\GiftCard\Block\Balance $block */
+?>
+<form class="form gift-card-balance"
+      action="<?php echo $block->escapeUrl($block->getFormAction()) ?>"
+      id="<?php echo $block->getFormId(); ?>"
+      method="post">
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?php echo $block->escapeHtml(__('Check gift card balance')) ?></span></legend><br />
+        <div class="field note no-label"><?= $block->escapeHtml(__('Enter your gift card code below')) ?></div>
+        <div class="field name required">
+            <label class="label" for="name"><span><?php echo $block->escapeHtml(__('Gift Card Code')) ?></span></label>
+            <div class="control">
+                <input name="gift_card_code" id="gift_card_code" title="<?php echo $block->escapeHtmlAttr(__('Gift Card Code')) ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <?php if ($block->showCaptcha()) : ?>
+        <div class="field re-captcha">
+            <div class="control">
+                <div class="g-recaptcha" data-sitekey="<?php echo $block->getReCaptcha()->getRecaptchaSiteKey($block->getStoreId()); ?>"></div>
+                <div for="re-captcha" class="mage-error re_captcha_error" generated="false" style="display: none;">
+                    <?php echo __('Please confrim you are not a robot'); ?>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+    </fieldset>
+
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?php echo $block->escapeHtmlAttr(__('Check Balance')) ?>" class="action submit primary">
+                <span><?php echo $block->escapeHtml(__('Check Balance')) ?></span>
+            </button>
+        </div>
+        <div class="gift-card-balance-error" style="display: none; color: red"></div>
+    </div>
+
+    <div class="gift-card-balance-success" style="display: none; line-height: 24px; padding: 20px; margin: 20px 0; border: 3px dashed #f4f4f4">
+        <?php echo __('Gift Card Balance'); ?>: <b><span class="gift-card-amount"></span></b><br/>
+        <?php echo __('Gift Card Status'); ?>:  <b><span class="gift-card-status"></span></b><br/>
+        <span class="gift-card-valid-to-container"><?php echo __('Expiration Date'); ?>: <b><span class="gift-card-valid-to"></span></b><br/></span>
+    </div>
+</form>
+
+<?php if ($block->showCaptcha()) : ?>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<?php endif; ?>
+<script type="text/javascript">
+    require(['jquery', 'Magetrend_GiftCard/js/view/balance'], function ($, GiftCardBalanceForm) {
+        $(function () {
+            GiftCardBalanceForm.init(<?php echo $block->getJsonConfig();?>);
+        });
+    });
+</script>
+
+

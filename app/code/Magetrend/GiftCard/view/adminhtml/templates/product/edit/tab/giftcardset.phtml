@@ -1,0 +1,44 @@
+<?php
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+?>
+<div class="entry-edit form-inline" id="<?php /* @escapeNotVerified */ echo $block->getId() ?>" data-panel="product-variations">
+    <div data-bind="scope: 'variation-steps-wizard'" class="product-create-configuration">
+        <div class="product-create-configuration-info">
+            <div class="note" data-role="product-create-configuration-info"></div>
+        </div>
+        <div class="product-create-configuration-actions" data-action="product-create-configuration-buttons">
+            <div class="product-create-configuration-action">
+                <button type="button" data-action="open-gift-card-set-popup" title="Create Product Configurations"
+                        class="action-secondary gift-card-set-action">
+                <span data-role="button-label" data-edit-label="Assign Gift Card Sets">
+                    Assign Gift Card Sets
+                </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="fieldset">
+        <?php echo $block->getChildHtml('assigned-gift-card-sets'); ?>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magetrend_GiftCard/js/product/giftcard/set": {
+                "blockId": "#<?php /* @noEscape */ echo $block->getId()?>",
+                "tabId": "<?php /* @noEscape */ echo $block->getTabId()?>",
+                "hasVariations": "true"
+            }
+        }
+    }
+</script>

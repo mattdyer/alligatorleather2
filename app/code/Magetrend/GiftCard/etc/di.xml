@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <virtualType name="Magetrend\GiftCard\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
+        <arguments>
+            <argument name="prices" xsi:type="array">
+                <item name="regular_price" xsi:type="string">Magetrend\GiftCard\Pricing\Price\RegularPrice</item>
+                <item name="final_price" xsi:type="string">Magetrend\GiftCard\Pricing\Price\FinalPrice</item>
+            </argument>
+            <argument name="target" xsi:type="object">Magento\Catalog\Pricing\Price\Pool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magetrend\GiftCard\Pricing\Price\Collection" type="Magento\Framework\Pricing\Price\Collection">
+        <arguments>
+            <argument name="pool" xsi:type="object">Magetrend\GiftCard\Pricing\Price\Pool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\Pricing\PriceInfo\Factory">
+        <arguments>
+            <argument name="types" xsi:type="array">
+                <item name="giftcard" xsi:type="array">
+                    <item name="infoClass" xsi:type="string">Magento\Framework\Pricing\PriceInfo\Base</item>
+                    <item name="prices" xsi:type="string">Magetrend\GiftCard\Pricing\Price\Collection</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magetrend\GiftCard\Model\ResourceModel\Product\Indexer\Price\GiftCard">
+        <arguments>
+            <argument name="tableStrategy" xsi:type="object">Magento\Catalog\Model\ResourceModel\Product\Indexer\TemporaryTableStrategy</argument>
+            <argument name="connectionName" xsi:type="string">indexer</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="GiftCardFinalPriceResolver" type="Magetrend\GiftCard\Pricing\Price\GiftCardPriceResolver">
+        <arguments>
+            <argument name="priceResolver" xsi:type="object">Magetrend\GiftCard\Pricing\Price\FinalPriceResolver</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magetrend\GiftCard\Pricing\Price\FinalPrice">
+        <arguments>
+            <argument name="priceResolver" xsi:type="object">GiftCardFinalPriceResolver</argument>
+        </arguments>
+    </type>
+    <virtualType name="RegularPriceResolver" type="Magetrend\GiftCard\Pricing\Price\GiftCardPriceResolver">
+        <arguments>
+            <argument name="priceResolver" xsi:type="object">Magetrend\GiftCard\Pricing\Price\RegularPriceResolver</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magetrend\GiftCard\Pricing\Price\RegularPrice">
+        <arguments>
+            <argument name="priceResolver" xsi:type="object">RegularPriceResolver</argument>
+        </arguments>
+    </type>
+
+    <preference for="Magetrend\GiftCard\Api\GiftCardManagementInterface" type="Magetrend\GiftCard\Model\Checkout\Cart\GiftCardManagement"/>
+
+    <preference for="Magetrend\GiftCard\Api\GuestGiftCardManagementInterface" type="Magetrend\GiftCard\Model\Checkout\Cart\GuestGiftCardManagement"/>
+
+    <type name="Magento\Sales\Model\Order\Payment">
+        <plugin name="magetrend-giftcard-payment"
+                type="Magetrend\GiftCard\Plugin\Sales\Order\Payment"
+                sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector">
+        <plugin name="magetrend-tax-commontaxcollector"
+                type="Magetrend\GiftCard\Plugin\Tax\Sales\Total\Quote\CommonTaxCollector"
+                sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Tax\Model\Sales\Total\Quote\Shipping">
+        <plugin name="magetrend-tax-quote-shipping"
+                type="Magetrend\GiftCard\Plugin\Tax\Sales\Total\Quote\Shipping"
+                sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="giftcard-quote-item-to-order-item"
+                type="Magetrend\GiftCard\Plugin\Quote\Item\ToOrderItem"
+                sortOrder="10"/>
+    </type>
+
+    <!--
+    <type name="Magento\Sales\Block\Adminhtml\Order\View\Items">
+        <plugin name="giftcard-order-item-column-sort"
+                type="Magetrend\GiftCard\Plugin\Sales\Block\Adminhtml\Order\View\Items"
+                sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Sales\Block\Adminhtml\Order\View\Items\Renderer\DefaultRenderer">
+        <plugin name="giftcard-order-item-renderer"
+                type="Magetrend\GiftCard\Plugin\Sales\Block\Adminhtml\Order\View\Items\Renderer\DefaultRenderer"
+                sortOrder="10"/>
+    </type>
+    -->
+
+
+    <!-- Register invoice item -->
+    <type name="Magento\Sales\Model\Order\Invoice\Item">
+        <plugin name="giftcard-order-invoice-item"
+                type="Magetrend\GiftCard\Plugin\Sales\Model\Order\Invoice\Item"
+                sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Sales\Model\Order\Creditmemo\Total\Shipping">
+        <plugin name="giftcard-creditmemo-shipping"
+                type="Magetrend\GiftCard\Plugin\Sales\Model\Order\Creditmemo\Totals\Shipping"
+                sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Sales\Model\Order\Invoice">
+        <plugin name="giftcard-invoice"
+                       type="Magetrend\GiftCard\Plugin\Sales\Model\Order\Invoice"
+                       sortOrder="10"/>
+    </type>
+
+
+    <!-- Magento 2.1.3 fix base_shipping_discount_tax_compensation_amnt -->
+    <type name="Magento\Tax\Model\Sales\Total\Quote\Tax">
+        <plugin name="giftcard-total-quote-tax"
+                type="Magetrend\GiftCard\Plugin\Sales\Model\Quote\Totals"
+                sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Tax\Model\Sales\Total\Quote\Shipping">
+        <plugin name="giftcard-total-quote-shipping"
+                type="Magetrend\GiftCard\Plugin\Sales\Model\Quote\Totals"
+                sortOrder="10"/>
+    </type>
+
+
+    <!-- Gift Card Grid Resources -->
+    <virtualType name="MagetrendGiftCardGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="MagetrendGiftCardGiftCardGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Magetrend\GiftCard\Model\ResourceModel\GiftCard\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MagetrendGiftCardGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magetrend\GiftCard\Model\ResourceModel\GiftCard\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mt_giftcard</argument>
+            <argument name="eventPrefix" xsi:type="string">magetrend_giftcard_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">giftcard_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Magetrend\GiftCard\Model\ResourceModel\GiftCard</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magetrend_giftcard_listing_data_source" xsi:type="string">Magetrend\GiftCard\Model\ResourceModel\GiftCard\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- M2.0 -->
+    <type name="Magento\Catalog\Block\Adminhtml\Product\Edit\Tabs">
+        <plugin name="giftcard-tabs"
+                type="Magetrend\GiftCard\Plugin\Catalog\Block\Adminhtml\Product\Edit\Tabs"
+                sortOrder="10"/>
+    </type>
+
+    <!-- Disable Cod -->
+    <type name="Magento\OfflinePayments\Model\Cashondelivery">
+        <plugin sortOrder="1" name="restrictByCustomer" type="Magetrend\GiftCard\Plugin\Payment\Cashondelivery"/>
+    </type>
+
+    <preference for="Magetrend\GiftCard\Api\Data\HistoryInterface" type="Magetrend\GiftCard\Model\History" />
+    <preference for="Magetrend\GiftCard\Api\HistoryRepositoryInterface" type="Magetrend\GiftCard\Model\HistoryRepository" />
+    <preference for="Magetrend\GiftCard\Api\HistoryManagementInterface" type="Magetrend\GiftCard\Model\HistoryManagement" />
+
+    <preference for="Magetrend\GiftCard\Api\Data\GiftCardInterface" type="Magetrend\GiftCard\Model\GiftCard" />
+    <preference for="Magetrend\GiftCard\Api\GiftCardRepositoryInterface" type="Magetrend\GiftCard\Model\GiftCardRepository" />
+
+    <!-- Since magento 2.3.3 -->
+    <type name="Magento\Framework\Mail\MimeMessage">
+        <plugin name="magetrend-giftcard-mime-message" type="Magetrend\GiftCard\Plugin\Framework\Mail\MimeMessage"/>
+    </type>
+</config>

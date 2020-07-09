@@ -1,0 +1,15 @@
+{
+    "name": "magetrend/giftcard",
+    "autoload": {
+        "psr-4": {"Magetrend\\GiftCard\\":""},
+        "files": ["registration.php"]
+    },
+    "description": "Gift Cards for Magento 2",
+    "type": "magento2-module",
+    "version": "1.1.16",
+    "support": {
+        "email": "support@magetrend.com",
+        "wiki": "http://wiki2.magetrend.com/gift-card/",
+        "author": "Edvinas Stulpinas"
+    }
+}

@@ -1,0 +1,20 @@
+<?php $collection = $block->getGiftCardCollection(); ?>
+
+<?php if ($collection->getSize() > 0) : ?>
+<div class="admin__page-section-item" style="width: 100%; height: auto; overflow: hidden; padding-bottom: 30px">
+    <div class="admin__page-section-item-title">
+        <span class="title"><?= /* @escapeNotVerified */ __('Gift Card Information') ?></span>
+    </div>
+    <div class="admin__page-section-item-content">
+        <p><b>The following gift cards was used in this order:</b></p>
+        <?php foreach ($collection as $giftCard) : ?>
+        <p>
+            <a href="<?php echo $block->getUrl('giftcard/giftcard/edit', ['id' => $giftCard->getId()]); ?>">
+                <?php echo $giftCard->getCode(); ?>
+            </a>
+        </p>
+        <?php endforeach; ?>
+
+    </div>
+</div>
+<?php endif; ?>

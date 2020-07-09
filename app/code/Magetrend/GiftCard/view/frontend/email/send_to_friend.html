@@ -1,0 +1,41 @@
+<!--@subject {{trans "Your friend %senderName sent the gift card for you!!!" senderName=$senderName}} @-->
+<!--@vars {
+"var order":"Order",
+"var giftCard":"Gift Card",
+"var sendByPost":"Send Gift Card By Post",
+"var recipientName":"Friend Name",
+"var senderName":"Sender Name",
+"var message":"Message to Friend"
+} @-->
+{{template config_path="design/email/header_template"}}
+<p class="greeting">{{trans "Hello %name," name=$recipientName}}</p>
+<p>{{trans "Your friend %senderName sent the gift card for you!!! Your gift card information is bellow and pdf for print is in attachments!" senderName=$senderName}}</p>
+<p></p>
+<table>
+    <tr>
+        <td><b>{{trans "Gift Card Code:"}}</b></td>
+        <td width="10px"></td>
+        <td>{{var giftCard.getCode()}}</td>
+    </tr>
+    <tr>
+        <td><b>{{trans "Status:"}}</b></td>
+        <td width="10px"></td>
+        <td>{{trans "%status" status=$giftCard.getStatus()}}</td>
+    </tr>
+    <tr>
+        <td><b>{{trans "Gift Card Balance:"}}</b></td>
+        <td width="10px"></td>
+        <td>{{var giftCard.getFormattedBalance()}}</td>
+    </tr>
+    <tr>
+        <td><b>{{trans "Valid to:"}}</b></td>
+        <td></td>
+        <td>{{var giftCard.getFormattedExpireDate()}}</td>
+    </tr>
+    <tr>
+    </tr>
+</table>
+<p>
+    {{layout handle="giftcard_email_store_list" gift_card=$giftCard}}
+</p>
+{{template config_path="design/email/footer_template"}}

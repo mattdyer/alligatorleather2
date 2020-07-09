@@ -1,0 +1,26 @@
+<?php
+/** @var \Magento\Catalog\Pricing\Render\FinalPriceBox $block */
+$idSuffix = $block->getIdSuffix() ? $block->getIdSuffix() : '';
+$schema = ($block->getZone() == 'item_view') ? true : false;
+$saleableProduct = $block->getSaleableItem();
+$finalPriceModel = $block->getPriceType('final_price');
+
+$minimumPrice = ($block->hasSpecialPrice())?$finalPriceModel->getAmount()->getValue():$saleableProduct->getMinPrice();
+$priceView = \Magento\Framework\App\ObjectManager::getInstance()->get('Magetrend\GiftCard\Helper\Data')->getPriceView();
+
+if ($priceView == \Magetrend\GiftCard\Model\Config\Source\PriceView::TYPE_MIN_MAX) {
+    $maximumPrice = $saleableProduct->getMaxPrice();
+} else {
+    $maximumPrice = $minimumPrice;
+}
+
+$renderAmount = $block->renderAmount($finalPriceModel->getAmount(), [
+    'price_id'          => $block->getPriceId('product-price-' . $idSuffix),
+    'price_type'        => 'finalPrice',
+    'include_container' => true,
+    'schema'            => $schema,
+    'min_price'         => $minimumPrice,
+    'max_price'         => $maximumPrice,
+]);
+
+echo $renderAmount;

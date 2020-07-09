@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <magetrend>
+            <giftcard>
+                <design>
+                    <one>
+                        <label>Design (Left)</label>
+                        <image>Magetrend_GiftCard::images/design/one.jpg</image>
+                        <options>
+                            <text_1>
+                                <label>Title</label>
+                                <value>Gift Card</value>
+                            </text_1>
+                            <text_2>
+                                <label>Information Block Title</label>
+                                <value>Bo Balloons</value>
+                            </text_2>
+                            <text_3>
+                                <label>Information Block Text</label>
+                                <value>This gift card can be used|for any of our store. |Visit: magetrend.com</value>
+                            </text_3>
+                            <text_4>
+                                <label>Translate: Gift Card Code</label>
+                                <value>Gift Card Code</value>
+                            </text_4>
+                            <text_5>
+                                <label>Translate: Valid:</label>
+                                <value>Valid:</value>
+                            </text_5>
+                            <text_6>
+                                <label>QR Code Data</label>
+                                <value>http://example.com</value>
+                            </text_6>
+                            <color_1>
+                                <label>Color 1</label>
+                                <value>#0089bf</value>
+                            </color_1>
+                            <color_2>
+                                <label>Color 2</label>
+                                <value>#C4ECF7</value>
+                            </color_2>
+                            <color_3>
+                                <label>Color 3</label>
+                                <value>#F25100</value>
+                                </color_3>
+                            <color_4>
+                                <label>Color 4</label>
+                                <value>#FFFFFF</value>
+                                </color_4>
+                            <color_5>
+                                <label>Color 5</label>
+                                <value>#1C1C1C</value>
+                            </color_5>
+                            <size_1>
+                                <label>Title Font Size</label>
+                                <value>120</value>
+                            </size_1>
+                            <size_2>
+                                <label>Information Block Title Font Size</label>
+                                <value>55</value>
+                            </size_2>
+                            <size_3>
+                                <label>Title Padding Top</label>
+                                <value>323</value>
+                            </size_3>
+                            <image_1>
+                                <label>Main Background</label>
+                                <value>Magetrend_GiftCard::images/design/one/bg.jpg</value>
+                            </image_1>
+                        </options>
+                    </one>
+                    <two>
+                        <label>Design (Bottom)</label>
+                        <image>Magetrend_GiftCard::images/design/two.jpg</image>
+                        <options>
+                            <text_1>
+                                <label>Title</label>
+                                <value>Gift Card</value>
+                            </text_1>
+                            <text_2>
+                                <label>Information Block Title</label>
+                                <value>Bo Balloons</value>
+                            </text_2>
+                            <text_3>
+                                <label>Information Block Text</label>
+                                <value>This gift card can be used|for any of our store. |Visit: magetrend.com</value>
+                            </text_3>
+                            <text_4>
+                                <label>Translate: Gift Card Code</label>
+                                <value>Gift Card Code</value>
+                            </text_4>
+                            <text_5>
+                                <label>Translate: Valid:</label>
+                                <value>Valid:</value>
+                            </text_5>
+                            <text_6>
+                                <label>QR Code Data</label>
+                                <value>http://example.com</value>
+                            </text_6>
+                            <color_1>
+                                <label>Color 1</label>
+                                <value>#0089bf</value>
+                            </color_1>
+                            <color_2>
+                                <label>Color 2</label>
+                                <value>#C4ECF7</value>
+                            </color_2>
+                            <color_3>
+                                <label>Color 3</label>
+                                <value>#F25100</value>
+                            </color_3>
+                            <color_4>
+                                <label>Color 4</label>
+                                <value>#FFFFFF</value>
+                            </color_4>
+                            <image_1>
+                                <label>Main Background</label>
+                                <value>Magetrend_GiftCard::images/design/two/bg.jpg</value>
+                            </image_1>
+                        </options>
+                    </two>
+                    <white>
+                        <label>White</label>
+                        <image>Magetrend_GiftCard::images/design/white.jpg</image>
+                        <options>
+                            <text_1>
+                                <label>Title</label>
+                                <value>Gift Card</value>
+                            </text_1>
+                            <text_3>
+                                <label>Store Url</label>
+                                <value>example.com</value>
+                            </text_3>
+                            <text_4>
+                                <label>Translate: Code</label>
+                                <value>Code</value>
+                            </text_4>
+                            <text_5>
+                                <label>Translate: Valid to:</label>
+                                <value>Valid to:</value>
+                            </text_5>
+                            <color_1>
+                                <label>Color 1</label>
+                                <value>#ffffff</value>
+                            </color_1>
+                            <color_2>
+                                <label>Color 2</label>
+                                <value>#0352f2</value>
+                            </color_2>
+                            <color_3>
+                                <label>Color 3</label>
+                                <value>#00ce70</value>
+                            </color_3>
+                            <color_4>
+                                <label>Color 4</label>
+                                <value>#ffffff</value>
+                            </color_4>
+                            <color_5>
+                                <label>Color 5</label>
+                                <value>#eb008b</value>
+                            </color_5>
+                        </options>
+                    </white>
+                </design>
+            </giftcard>
+        </magetrend>
+        <giftcard>
+            <email>
+                <to_friend>giftcard_email_to_friend</to_friend>
+                <to_customer>giftcard_email_to_customer</to_customer>
+                <default_sender_name>example store</default_sender_name>
+                <default_sender_email>sales@examplestore.com</default_sender_email>
+            </email>
+            <tax>
+                <type>after</type>
+            </tax>
+        </giftcard>
+        <sales>
+            <totals_sort>
+                <giftcard>45</giftcard>
+            </totals_sort>
+        </sales>
+
+    </default>
+</config>

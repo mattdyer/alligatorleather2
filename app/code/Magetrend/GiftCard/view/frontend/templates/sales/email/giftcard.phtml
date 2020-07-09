@@ -1,0 +1,13 @@
+<?php $collection = $block->getGiftCardCollection(); ?>
+<?php if (!empty($collection)) : ?>
+    <table class="order-details">
+        <tr>
+            <td>
+                <h3><?php echo __('The following gift cards was used in this order:'); ?></h3>
+                <?php foreach ($collection as $giftCard) : ?>
+                <p><?php echo $giftCard->getCode(); ?></p>
+                <?php endforeach; ?>
+            </td>
+        </tr>
+    </table>
+<?php endif; ?>

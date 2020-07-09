@@ -1,0 +1,50 @@
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+
+.giftcard-template-index .col-id.col-entity_id,
+.giftcard-giftcardset-index .col-id.col-entity_id {
+    width: 50px;
+}
+
+.giftcard-giftcardset-index  .col-name.col-value,
+.giftcard-giftcardset-index  .col-name.col-life_time {
+    min-width: 10%;
+}
+
+.giftcard-template-index .col-name.col-design {
+    width: 10%;
+}
+
+.giftcard-giftcard-edit .col-date{
+    width: 180px;
+}
+
+.giftcard-giftcard-edit .col-amount,
+.giftcard-giftcard-edit .col-balance {
+    width: 120px;
+}
+
+.giftcard-giftcard-edit .col-gift_card_status {
+    width: 200px;
+}
+
+.mtgc-small-col {
+     min-width: 5%;
+}
+
+.mtgc-period{
+     min-width: 100px;
+}
+
+div[data-index="assigngiftcardset"] div[data-index="price"] input {
+    width: 100px;
+}

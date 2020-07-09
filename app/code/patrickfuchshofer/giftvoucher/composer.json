@@ -1,0 +1,29 @@
+{
+    "name": "patrickfuchshofer/giftvoucher",
+    "description": "Trapped over deciding what could you can gift your customers, employees, relatives or neighbours. Here we come to your rescue with our brilliantly customizable gift cards plugin.",
+    "type": "magento2-module",
+    "version": "1.0.1",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "require": {
+        "php": "~7.1.0|~7.2.0|~7.3.0"
+    },
+    "authors": [
+        {
+            "name": "Patrick Fuchshofer",
+            "email": "Patrickfuchshofer@gmail.com",
+            "homepage": "https://www.codemenschen.at/",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Patrickfuchshofer\\Giftvoucher\\": ""
+        }
+    }
+}

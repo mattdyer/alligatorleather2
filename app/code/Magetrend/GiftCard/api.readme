@@ -1,0 +1,103 @@
+<?php
+
+/**
+ * Get gift card data
+ * Endpoint: V1/gift-card/{GIFT_CARD_CODE}
+ * Method: GET
+ * Content Type: Json
+ */
+
+/**
+ * Request example with php curl
+ */
+$curl = curl_init('http://local.magetrend.com/rest/V1/gift-card/AAAA-BBBB');
+curl_setopt($curl, CURLOPT_HEADER, 0 );
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET" );
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true );
+curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+    "Content-Type: application/json",
+    "Authorization: Bearer af8wwao8auwoczxe2yez8kej1n6cnmsa"
+) );
+
+$responseBody = curl_exec($curl);
+$responseStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+echo $responseStatus.' '.$responseBody;
+
+/**
+ * Request response
+ * Response format: json
+ * Response status: 200
+ * Response body: {"balance":50.01,"status":"active","expire_date":"2020-12-31 00:00:00","currency":"USD"}
+ */
+
+/**********************************************************************************************************/
+
+/**
+ * Update gift card data
+ * Endpoint: V1/gift-card/{GIFT_CARD_CODE}
+ * Method: PUT
+ * Params {"giftCard":{"status":"inactive","balance":"1.01"}}
+ * Content Type: Json
+ */
+
+/**
+ * Request example with php curl
+ */
+$data = [
+    'giftCard' => [
+        'status' => 'inactive',
+        'balance' => '0.11',
+    ]
+];
+$curl = curl_init('http://local.magetrend.com/rest/V1/gift-card/AAAA-BBBB');
+curl_setopt($curl, CURLOPT_HEADER, 0 );
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true );
+curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+    "Content-Type: application/json",
+    "Authorization: Bearer af8wwao8auwoczxe2yez8kej1n6cnmsa"
+) );
+
+$responseBody = curl_exec($curl);
+$responseStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+echo $responseStatus.' '.$responseBody;
+
+/**
+ * Request response
+ * Response format: json
+ * Response status: 200
+ * Response body: {"balance":0.01,"status":"inactive","expire_date":"2020-12-31 00:00:00","currency":"USD"}
+ */
+
+/**********************************************************************************************************/
+
+
+/**
+ * Testing with non exist gift card code
+ * Endpoint: V1/gift-card/{GIFT_CARD_CODE}
+ * Method: GET
+ * Content Type: Json
+ */
+
+$curl = curl_init('http://local.magetrend.com/rest/V1/gift-card/AAAA-BBBB-C');
+curl_setopt($curl, CURLOPT_HEADER, 0 );
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET" );
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true );
+curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+    "Content-Type: application/json",
+    "Authorization: Bearer af8wwao8auwoczxe2yez8kej1n6cnmsa"
+) );
+
+$responseBody = curl_exec($curl);
+$responseStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+echo $responseStatus.' '.$responseBody;
+
+/**
+ * Request response
+ * Response format: json
+ * Response status: 404
+ * Response body: {"message":"Gift card does not exist: \"%1\" ","parameters":["AAAA-BBBB-C"]...........
+ */
+
+

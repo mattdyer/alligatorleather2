@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="items_grid">
+            <block class="Magetrend\GiftCard\Block\Adminhtml\Sales\Order\Create\GiftCard" template="Magetrend_GiftCard::order/create/giftcard/form.phtml" name="giftcards" after="coupons">
+            </block>
+        </referenceBlock>
+
+        <referenceBlock name="totals">
+            <block class="Magetrend\GiftCard\Block\Adminhtml\Sales\Order\Totals" name="giftcard_creditmemo_totals">
+                <action method="setBeforeCondition">
+                    <argument name="condition" xsi:type="string">grand_total</argument>
+                </action>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

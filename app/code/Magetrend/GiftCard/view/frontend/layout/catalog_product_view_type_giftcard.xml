@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magetrend_GiftCard::css/product.css"/>
+    </head>
+    <body>
+        <attribute name="class" value="page-product-configurable"/>
+        <referenceBlock name="head.components">
+            <block class="Magento\Framework\View\Element\Js\Components" name="configurableproduct_product_view_head_components" template="Magento_ConfigurableProduct::js/components.phtml"/>
+        </referenceBlock>
+        <referenceContainer name="product.info.type">
+            <block class="Magetrend\GiftCard\Block\Product\View\Type\GiftCard" name="product.info.configurable" as="product_type_data" template="Magento_Catalog::product/view/type/default.phtml"/>
+
+        </referenceContainer>
+        <referenceBlock name="product.info.options.wrapper">
+            <block class="Magetrend\GiftCard\Block\Product\View\Type\GiftCard" name="product.info.options.giftcard" as="options_giftcard" before="-" template="product/view/type/options/giftcard.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

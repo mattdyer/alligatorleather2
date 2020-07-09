@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Patrickfuchshofer_Giftvoucher::giftvoucher" title="Gift Voucher" module="Patrickfuchshofer_Giftvoucher" sortOrder="9999" resource="Magento_Backend::content" />
+
+        <add id="Patrickfuchshofer_Giftvoucher::allgiftitems" title="All Gift Items" module="Patrickfuchshofer_Giftvoucher" sortOrder="0" action="giftvoucher/allgiftitems/index" parent="Patrickfuchshofer_Giftvoucher::giftvoucher" resource="Magento_Backend::content" />
+
+        <add id="Patrickfuchshofer_Giftvoucher::addnewitem" title="Add New Item" module="Patrickfuchshofer_Giftvoucher" sortOrder="0" action="giftvoucher/addnewitem/index" parent="Patrickfuchshofer_Giftvoucher::giftvoucher" resource="Magento_Backend::content" />
+
+        <add id="Patrickfuchshofer_Giftvoucher::itemcategory" title="Item Category" module="Patrickfuchshofer_Giftvoucher" sortOrder="0" action="giftvoucher/itemcategory/index" parent="Patrickfuchshofer_Giftvoucher::giftvoucher" resource="Magento_Backend::content" />
+
+        <!-- <add id="Patrickfuchshofer_Giftvoucher::vouchertemplate" title="Voucher Template" module="Patrickfuchshofer_Giftvoucher" sortOrder="0" action="giftvoucher/vouchertemplate/index" parent="Patrickfuchshofer_Giftvoucher::giftvoucher" resource="Magento_Backend::content" />
+
+        <add id="Patrickfuchshofer_Giftvoucher::addnewtemplate" title="Add New Template" module="Patrickfuchshofer_Giftvoucher" sortOrder="0" action="giftvoucher/addnewtemplate/index" parent="Patrickfuchshofer_Giftvoucher::giftvoucher" resource="Magento_Backend::content" /> -->
+
+        <!-- <add id="Patrickfuchshofer_Giftvoucher::settings" title="Settings" module="Patrickfuchshofer_Giftvoucher" sortOrder="0" action="giftvoucher/settings/index" parent="Patrickfuchshofer_Giftvoucher::giftvoucher" resource="Magento_Backend::content" /> -->
+
+        <!-- <add id="Patrickfuchshofer_Giftvoucher::giftvoucherorders" title="Gift Voucher Orders" module="Patrickfuchshofer_Giftvoucher" sortOrder="0" action="giftvoucher/giftvoucherorders/index" parent="Patrickfuchshofer_Giftvoucher::giftvoucher" resource="Magento_Backend::content" /> -->
+    </menu>
+</config>

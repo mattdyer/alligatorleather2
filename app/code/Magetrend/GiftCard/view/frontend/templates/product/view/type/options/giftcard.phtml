@@ -1,0 +1,151 @@
+<?php
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+// @codingStandardsIgnoreFile
+?>
+<?php
+    $_product    = $block->getProduct();
+    $giftCardSets = $block->getAssignedGiftCardSets();
+    $helper = $block->getHelper();
+    $options = $_product->getPreconfiguredValues();
+    $giftCardAttributes = [];
+    if ($options) {
+        $giftCardAttributes = $options->getGiftCardAttribute();
+    }
+?>
+<?php if ($_product->isSaleable() && count($giftCardSets)):?>
+    <?php if ($giftCardSets->getSize() > 1) : ?>
+    <div class="field giftcard required">
+        <label class="label" for="attribute_gc_value">
+            <span><?php /* @escapeNotVerified */ echo __('Gift Card Value');?></span>
+        </label>
+        <div class="control">
+            <select name="gift_card_attribute[gc_set_id]"
+                    data-selector="gift_card_attribute[gc_set_id]]"
+                    data-validate="{required:true}"
+                    id="attribute_gc_set_id"
+                    class="super-attribute-select">
+                <?php foreach ($giftCardSets as $giftCardSet): ?>
+
+                    <option
+                        value="<?php /* @escapeNotVerified */ echo $giftCardSet->getGiftCardSetId();?>">
+                        <?php /* @escapeNotVerified */ echo $helper->formatPrice($giftCardSet->getValue(), $giftCardSet->getCurrency());?>
+                        <?php if ($giftCardSet->getPrice() != $giftCardSet->getValue()) :?>
+                            <?php /* @escapeNotVerified */ echo ' '.__('for').' '; ?>
+                            <?php /* @escapeNotVerified */ echo $helper->formatPrice($giftCardSet->getPrice(), $giftCardSet->getCurrency());?>
+                        <?php endif;?>
+                    </option>
+                <?php endforeach;?>
+            </select>
+        </div>
+    </div>
+    <?php endif; ?>
+    <?php if ($giftCardSets->getSize() == 1) : ?>
+        <input type="hidden"
+               value="<?php echo $giftCardSets->getFirstItem()->getGiftCardSetId(); ?>"
+               name="gift_card_attribute[gc_set_id]"
+               data-selector="gift_card_attribute[gc_set_id]]"
+               id="attribute_gc_set_id" />
+    <?php endif; ?>
+
+    <?php if ($block->isAllowedToRefuse($_product)) : ?>
+        <?php $checkedSendByPost= (isset($giftCardAttributes['gc_send_by_post']) && $giftCardAttributes['gc_send_by_post'] == 1)?'checked="checked" ':''; ?>
+        <div class="field giftcard">
+            <input <?php echo $checkedSendByPost; ?>type="checkbox" id="attribute_gc_send_by_post" name="gift_card_attribute[gc_send_by_post]" value="1"/>
+            <label class="label" for="attribute_gc_send_by_post">
+                <span><?php /* @escapeNotVerified */ echo __('Send Printed Gift Card by Post');?></span>
+            </label>
+        </div>
+    <?php else : ?>
+        <input type="hidden" id="attribute_gc_send_by_post" name="gift_card_attribute[gc_send_by_post]" value="<?php echo $block->getSendByPostHiddenValue($_product);?>"/>
+    <?php endif;?>
+
+    <?php if ($_product->getData('gc_send_to_friend') == 1) : ?>
+        <?php $checkedSendToFriend = (isset($giftCardAttributes['gc_send_to_friend']) && $giftCardAttributes['gc_send_to_friend'] == 1)?'checked="checked" ':''; ?>
+        <div class="field giftcard ">
+            <input <?php echo $checkedSendToFriend; ?>type="checkbox" id="attribute_gc_send_to_friend" name="gift_card_attribute[gc_send_to_friend]" value="1"/>
+            <label class="label" for="attribute_gc_send_to_friend">
+                <span><?php /* @escapeNotVerified */ echo __('Send to Friend');?></span>
+            </label>
+        </div>
+
+        <?php if ($_product->getData('gc_field_sender_name') == 1) : ?>
+            <div class="field giftcard send-to-friend-form-field">
+                <label class="label" for="attribute_gc_sender_name">
+                    <span><?php /* @escapeNotVerified */ echo __('Sender Name');?></span>
+                </label>
+                <div class="control">
+                    <input type="text" id="attribute_gc_sender_name" name="gift_card_attribute[gc_field_sender_name]"
+                           value="<?php echo (isset($giftCardAttributes['gc_field_sender_name']))?$giftCardAttributes['gc_field_sender_name']:''; ?>"
+                           data-validate="{required:true, 'required-entry':true}"/>
+                </div>
+            </div>
+        <?php endif;?>
+
+
+        <?php if ($_product->getData('gc_field_recipient_name') == 1) : ?>
+            <div class="field giftcard send-to-friend-form-field">
+                <label class="label" for="attribute_gc_recipient_name">
+                    <span><?php /* @escapeNotVerified */ echo __('Recipient Name');?></span>
+                </label>
+                <div class="control">
+                    <input type="text" id="attribute_gc_recipient_name"
+                           name="gift_card_attribute[gc_field_recipient_name]"
+                           value="<?php echo (isset($giftCardAttributes['gc_field_recipient_name']))?$giftCardAttributes['gc_field_recipient_name']:''; ?>"
+                           data-validate="{required:true, 'required-entry':true}"/>
+                </div>
+            </div>
+        <?php endif;?>
+
+
+        <?php if ($_product->getData('gc_field_recipient_email') == 1) : ?>
+            <div class="field giftcard send-to-friend-form-field">
+                <label class="label" for="attribute_gc_recipient_email">
+                    <span><?php /* @escapeNotVerified */ echo __('Recipient Email');?></span>
+                </label>
+                <div class="control">
+                    <input type="text"
+                           id="attribute_gc_recipient_email"
+                           name="gift_card_attribute[gc_field_recipient_email]"
+                           value="<?php echo (isset($giftCardAttributes['gc_field_recipient_email']))?$giftCardAttributes['gc_field_recipient_email']:''; ?>"
+                           data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+        <?php endif;?>
+
+        <?php if ($_product->getData('gc_field_message') == 1) : ?>
+            <div class="field giftcard send-to-friend-form-field">
+                <label class="label" for="attribute_gc_message">
+                    <span><?php /* @escapeNotVerified */ echo __('Message to Friend');?></span>
+                </label>
+                <div class="control">
+                    <textarea id="attribute_gc_message"
+                              name="gift_card_attribute[gc_field_message]"
+                              data-validate="{required:true, 'required-entry':true}"
+                    ><?php echo (isset($giftCardAttributes['gc_field_message']))?$giftCardAttributes['gc_field_message']:''; ?></textarea>
+                </div>
+            </div>
+        <?php endif;?>
+    <?php endif;?>
+
+
+    <script type="text/x-magento-init">
+        {
+            "#product_addtocart_form": {
+                "giftCardProduct": {
+                    "giftCardConfig": <?php /* @escapeNotVerified */ echo $block->getJsonConfig() ?>,
+                    "onlyMainImg": "false"
+                }
+            }
+        }
+    </script>
+<?php endif;?>

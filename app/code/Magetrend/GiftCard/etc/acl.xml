@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MB "Vienas bitas" (Magetrend.com)
+ *
+ * PHP version 5.3 or later
+ *
+ * @category MageTrend
+ * @package  Magetend/GiftCard
+ * @author   Edvinas Stulpinas <edwin@magetrend.com>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     https://www.magetrend.com/magento-2-gift-card
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Catalog::catalog">
+                    <resource id="Magetrend_GiftCard::giftcard" title="Gift Card">
+                        <resource id="Magetrend_GiftCard::managegiftcard" title="Manage Gift Card" sortOrder="1" />
+                        <resource id="Magetrend_GiftCard::giftcardset" title="Gift Card Set" sortOrder="10" />
+                        <resource id="Magetrend_GiftCard::template" title="Templates" sortOrder="20" />
+                        <resource id="Magetrend_GiftCard::settings" title="Settings" sortOrder="30"/>
+                    </resource>
+                </resource>
+
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Magetrend_GiftCard::config_general" title="Gift Card Settings" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
