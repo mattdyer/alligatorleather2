@@ -144,3 +144,40 @@ a:visited{
 .initials-option-image{
 	max-width: 100px;
 }
+
+.gift-card-link{
+    font-size: 14px;
+    margin-left: 20%;
+    padding: 5px 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #CCCCCC;
+    border-radius: 0 0 12px 12px;
+    border-bottom: 1px solid #666666;
+    border-right: 1px solid #666666;
+    position: absolute;
+    z-index: 100;
+}
+
+.gift-card-link:hover{
+	text-decoration: none;
+	border-bottom: 2px solid #666666;
+    border-right: 2px solid #666666;
+    text-shadow: 1px 2px rgb(255,255,255,0.5);
+}
+
+.gift-card-link span{
+	font-size: 10px;
+    font-weight: bold;
+    color: #FF0000;
+    position: relative;
+    bottom: 2px;
+    background-color: #ffaaaa;
+    padding: 1px 5px;
+    border-radius: 5px;
+    border: 1px solid #FF0000;
+    margin-left: 5px;
+    text-shadow: none;
+    display: inline-block;
+    transform: rotate(-23deg);
+}
